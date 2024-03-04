@@ -1,7 +1,7 @@
-import { PrismaClient } from '@prisma/client/edge'
-import { withAccelerate } from '@prisma/extension-accelerate'
 import { Hono } from 'hono';
-import { sign } from 'hono/jwt'
+import { userRouter } from './routes/user';
+import { blogRouter } from './routes/blog';
+
 
 // Create the main Hono app
 const app = new Hono<{
@@ -11,55 +11,10 @@ const app = new Hono<{
   }
 }>();
 
+app.route("/api/v1/user", userRouter);
+app.route("/api/v1/blog", blogRouter);
 
-app.post('/api/v1/user/signup', async (c) => {
-  const prisma = new PrismaClient({
-    datasourceUrl: c.env?.DATABASE_URL,
-  }).$extends(withAccelerate());
 
-  const body = await c.req.json();
-  try {
-    const user = await prisma.user.create({
-      data: {
-        email: body.email,
-        password: body.password
-      }
-    });
-    const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
-    return c.json({ jwt });
-  } catch (e) {
-    c.status(403);
-    return c.json({ error: "error while signing up" });
-  }
-})
-
-app.post('/api/v1/user/signin', async (c) => {
-  const prisma = new PrismaClient({
-    datasourceUrl: c.env?.DATABASE_URL,
-  }).$extends(withAccelerate());
-
-  const body = await c.req.json();
-
-  try {
-    const user = await prisma.user.findFirst({
-      where: {
-        email: body.email,
-        password: body.password
-      }
-    });
-    if (!user) {
-      c.status(403)
-      return c.json({
-        message: "Incorrect Credentials"
-      })
-    }
-    const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
-    return c.json({ jwt });
-  } catch (e) {
-    c.status(403);
-    return c.json({ error: "error while signing in" });
-  }
-})
 app.post('/api/v1/blog', (c) => {
   return c.text("Blog route")
 })
