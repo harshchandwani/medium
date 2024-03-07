@@ -30,7 +30,8 @@ Here is the Journey of this application from scatch
 - Set up **JWT** auth token using **Hono**
 - Make Separate Routes for User and Blog
 - Tested all Routes and Deployed Backend to Cloudflare
--
+- Added Zod Validation
+- deployed NPM package [explained below]
 
 ### Why Prisma Accerlerate is Used?
 
@@ -56,5 +57,5 @@ export const signupInput = z.object({
 //type inference in zod
 type SignupParams = z.infer<typeof signupInput>;
 ```
--![Zod](zod.png);
+![Zod](zod.png)
 
