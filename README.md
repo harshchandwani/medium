@@ -2,7 +2,7 @@
 
 An open-source application built using Hono, React and everything a production-ready application has.
 
-> **Warning**
+> [!WARNING]
 > This app is a work in progress. I'm building this in public. You can follow the progress on Twitter [@heyy_harshh](https://twitter.com/heyy_harshh).
 
 ## About this project
@@ -21,7 +21,7 @@ This project is an experiment to see how a modern app (with cloudflare workers, 
 - **JWT** for authentication
 - **Zod** for Validation
 
-Here is the Journey of this application from scatch
+## Here is the Journey of this application from scatch
 
 - Initialize using Hono
 - Created Handlers for signup, signin, blogs
@@ -33,28 +33,30 @@ Here is the Journey of this application from scatch
 - Added Zod Validation
 - deployed NPM package [explained below]
 
-### Why Prisma Accerlerate is Used?
+## Why Prisma Accerlerate is Used?
 
 - ![Db](image.png)
 
-### Why are we using monorepos like in this case we use common?
+## Why are we using monorepos like in this case we use common?
 
 Here are the list of reasons, with advantages
 
 - Code Reusability (if we dont use the common module, we have to define the type and zod implementation on both frontend and backend)
 - Consistency (Suppose you change something in the frontend, you have to do in backend too, else your application will break)
 
-> **Important**
+> [!IMPORTANT]
 > For frontend we need type or interface
 > For backend we need varibles, so we cant directly use a same file
 > But in case of Zod, it gives us that benefit, that we can create a a variable and then export it as infer too.
 
 ```typescript
+//for Backend
 export const signupInput = z.object({
     username: z.string();
     password: z.string();
 })
 //type inference in zod
+//for frontend
 type SignupParams = z.infer<typeof signupInput>;
 ```
 ![Zod](zod.png)
