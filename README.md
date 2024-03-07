@@ -7,9 +7,9 @@ An open-source application built using Hono, React and everything a production-r
 
 ## About this project
 
-This project is an experiment to see how a modern app (with cloudflare workers, postgres DB, Hono, Prisma, JWT and React) would work in a Production ready application.
+This project experiments to see how a modern app (with Cloudflare workers, Postgres DB, Hono, Prisma, JWT and React) would work in a Production-ready application.
 
-## Features
+## Tech Used
 
 - **React** for Frontend
 - **TailwindCSS** for CSS
@@ -21,33 +21,33 @@ This project is an experiment to see how a modern app (with cloudflare workers, 
 - **JWT** for authentication
 - **Zod** for Validation
 
-## Here is the Journey of this application from scatch
+## Here is the Journey of this application from Scratch
 
 - Initialize using Hono
-- Created Handlers for signup, signin, blogs
+- Created Handlers for signup, sign-in, and blogs
 - Initialize Database using **Neon.tech Postgres** and **Prisma**
-- Created Schema for User and Blogs
+- Created Schema for Users and Blogs
 - Set up **JWT** auth token using **Hono**
 - Make Separate Routes for User and Blog
 - Tested all Routes and Deployed Backend to Cloudflare
 - Added Zod Validation
 - deployed NPM package [explained below]
 
-## Why Prisma Accerlerate is Used?
+## Why is Prisma Accelerate used?
 
 - ![Db](image.png)
 
-## Why are we using monorepos like in this case we use common?
+## Why are we using monorepos like in this case, we use common?
 
 Here are the list of reasons, with advantages
 
-- Code Reusability (if we dont use the common module, we have to define the type and zod implementation on both frontend and backend)
-- Consistency (Suppose you change something in the frontend, you have to do in backend too, else your application will break)
+- Code Reusability (if we don't use the common module, we have to define the type and zod implementation on both frontend and backend)
+- Consistency (Suppose you change something in the frontend, you have to do it in the backend too, or else your application will break)
 
 > [!IMPORTANT]
-> For frontend we need type or interface
-> For backend we need varibles, so we cant directly use a same file
-> But in case of Zod, it gives us that benefit, that we can create a a variable and then export it as infer too.
+> For the frontend we need type or interface
+> For the backend we need variables, so we can directly use the same file
+> But in the case of Zod, it gives us the benefit, that we can create a a variable and then export it as infer too.
 
 ```typescript
 //for Backend
@@ -55,7 +55,7 @@ export const signupInput = z.object({
     username: z.string();
     password: z.string();
 })
-//type inference in zod
+//type inference in Zod
 //for frontend
 type SignupParams = z.infer<typeof signupInput>;
 ```
