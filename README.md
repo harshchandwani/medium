@@ -26,6 +26,7 @@ Here is the Journey of this application from scatch
 - Created Schema for User and Blogs
 - Set up **JWT** auth token using **Hono**
 - Make Separate Routes for User and Blog
+- Tested all Routes and Deployed Backend to Cloudflare
 
 ### Why Prisma Accerlerate is Used?  
 - ![Db](image.png)
