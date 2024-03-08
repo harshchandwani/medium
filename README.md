@@ -61,3 +61,19 @@ type SignupParams = z.infer<typeof signupInput>;
 ```
 ![Zod](zod.png)
 
+## How to get Values from Old Object to New Object?
+``` typescript
+//old Object
+const oldObj = {
+    name: "harsh",
+    age: 21
+}
+
+//new Object
+const newObj = {
+    ...oldObj, 
+    age: 23 //you can override values from old Object to new
+
+}
+```
+This will let us create new Object with the values of old object
