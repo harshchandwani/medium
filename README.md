@@ -32,6 +32,9 @@ This project experiments to see how a modern app (with Cloudflare workers, Postg
 - Tested all Routes and Deployed Backend to Cloudflare
 - Added Zod Validation
 - deployed NPM package [explained below]
+- Routing in Frontend
+- Developed Signin and Signup Pages
+- Connection to Backend via Axios
 
 ## Why is Prisma Accelerate used?
 
@@ -59,21 +62,23 @@ export const signupInput = z.object({
 //for frontend
 type SignupParams = z.infer<typeof signupInput>;
 ```
+
 ![Zod](zod.png)
 
 ## How to get Values from Old Object to New Object?
-``` typescript
+
+```typescript
 //old Object
 const oldObj = {
-    name: "harsh",
-    age: 21
-}
+  name: "harsh",
+  age: 21,
+};
 
 //new Object
 const newObj = {
-    ...oldObj, 
-    age: 23 //you can override values from old Object to new
-
-}
+  ...oldObj,
+  age: 23, //you can override values from old Object to new
+};
 ```
+
 This will let us create new Object with the values of old object
