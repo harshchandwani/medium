@@ -82,3 +82,10 @@ const newObj = {
 ```
 
 This will let us create new Object with the values of old object
+
+## Different Ways we tried to fetch and store Data (Blogs)
+
+- store it in state
+- store it directly in component
+- store it in a context variables
+- create an own custom hook useBlogs
