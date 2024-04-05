@@ -34,7 +34,7 @@ This project experiments to see how a modern app (with Cloudflare workers, Postg
 - deployed NPM package [explained below]
 - Routing in Frontend
 - Developed Signin and Signup Pages
-- Connection to Backend via Axios
+- Connection to **Backend** via **Axios**
 - Making the data available via bulk
 - Dashboard ready for use
 
